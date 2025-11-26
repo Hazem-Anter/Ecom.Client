@@ -8,6 +8,13 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const snackBar = inject(MatSnackBar); // Inject Material SnackBar
   const router = inject(Router);
 
+  const ERROR_MESSAGES = { // Centralized error messages for consistency, can be expanded as needed
+  400: 'Bad request',
+  401: 'Unauthorized access',
+  404: 'Resource not found',
+  500: 'Server error - Please try again later'
+};
+
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error) {
@@ -33,7 +40,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
         }
         if (error.status === 404) {
           snackBar.open('Resource not found', 'Close', {
-            duration: 3000,
+            duration: 4000,
             panelClass: ['warning-snackbar']
           });
           router.navigateByUrl('/not-found');

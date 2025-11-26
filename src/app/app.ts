@@ -1,8 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SharedModule } from './shared/shared-module';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment.development';
+
+import { SharedModule } from './shared/shared-module'; // Used for shared components, pipes, directives, etc.
+import { CoreModule } from './core/core-module'; // Used for singleton services, guards, interceptors, etc.
 
 @Component({
   selector: 'app-root',
