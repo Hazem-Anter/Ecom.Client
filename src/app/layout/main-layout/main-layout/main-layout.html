@@ -1,18 +1,11 @@
-<div class="min-h-screen flex flex-col">
+<div class="min-h-screen flex flex-col bg-gray-50">
     <!-- Header / Navbar -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-4 py-4">
-            <h1 class="text-xl font-bold text-blue-600">E-Com Store</h1>
-            <!-- <app-navbar></app-navbar> -->
-        </nav>
-    </header>
+        <app-test-navbar></app-test-navbar>
 
     <!-- Main Content -->
-    <main class="flex-grow bg-gray-50">
-        <div class="container mx-auto px-4 py-6">
-            <router-outlet></router-outlet>
-        </div>
-    </main>
+    <main class="flex-grow container mx-auto px-4 py-6">
+        <router-outlet></router-outlet>
+      </main>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-blue-600 py-6 mt-auto">
