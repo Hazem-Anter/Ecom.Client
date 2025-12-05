@@ -122,7 +122,7 @@ export class ProductDetailsComponent implements OnInit {
       next: () => {
         this.toast.success(`Added ${this.quantity} ${this.product!.title}(s) to cart!`);
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error("Cart error", err);
         this.toast.error('Failed to add item to cart.');
       }
