@@ -67,7 +67,8 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'shopping'
+    loadChildren: () =>
+      import('./features/not-found/not-found-module').then(m => m.NotFoundModule)
   }
 ];
 

@@ -6,6 +6,8 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 import { MaterialModule } from '../../../shared/material/material-module';
 import { CartService } from '../../../core/services/cart-service';
 import { WishlistService } from '../../../core/services/wishlist-service';
+import { ToastService } from '../../../core/services/toast.service';
+import { AuthService } from '../../../core/services/auth-service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,7 +16,9 @@ import { WishlistService } from '../../../core/services/wishlist-service';
   standalone: false
 })
 export class ProductDetailsComponent implements OnInit {
+  private authService = inject(AuthService);
   private wishlistService = inject(WishlistService);
+  private toast = inject(ToastService);
   
   product: Product | null = null;
   isLoading = false;
@@ -103,6 +107,13 @@ export class ProductDetailsComponent implements OnInit {
 
   // UPDATED: Add to cart with product ID and quantity parameters
   addToCart(): void {
+    console.log(this.authService.isAuthenticated());
+    if(!this.authService.isAuthenticated()) {
+      console.log('User not authenticated. Cannot add to cart.');
+      this.toast.warn('Please log in to add items to your cart!');
+      return;
+    }
+
     if (!this.product) return;
     
     // TODO: Implement cart service
@@ -114,18 +125,31 @@ export class ProductDetailsComponent implements OnInit {
 
   // NEW: Add to wishlist with product ID parameter
   addToWishlist(): void {
+    console.log(this.authService.isAuthenticated());
+    if(!this.authService.isAuthenticated()) {
+      console.log('User not authenticated. Cannot add to wishlist.');
+      this.toast.warn('Please log in to add items to your wishlist!');
+      return;
+    }
+
     if (!this.product) return;
     
     // Get the product ID
     const productId = this.product.id;
     
     // TODO: Implement wishlist service - use this parameter:
-    this.wishlistService.addToWishlist(productId).subscribe();
+    this.wishlistService.addToWishlist(productId).subscribe({
+      next: (item) => {
+        if (item) this.toast.success('Item successfully added to wishlist!');
+        else this.toast.warn('Item already exists in wishlist!');
+      },
+      error: (err) => this.toast.error('Something went wrong')}
+    );
     
     console.log('Add to wishlist - Product ID:', productId);
     
     // Show success message
-    alert(`Added ${this.product.title} to your wishlist!`);
+    //alert(`Added ${this.product.title} to your wishlist!`);
   }
 
   isInStock(): boolean {
