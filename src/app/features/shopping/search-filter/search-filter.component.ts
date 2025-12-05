@@ -1,3 +1,5 @@
+
+// search-filter.component.ts - FIXED VERSION
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ProductFilter, Product } from '../../../core/models/product.models';
@@ -84,6 +86,9 @@ export class SearchFilterComponent implements OnInit {
     if (formValue.search?.trim()) {
       filter.search = formValue.search.trim();
     }
+    else {
+    filter.search = null; // <<-- important!
+  }
     
     if (formValue.minPrice) {
       filter.minPrice = formValue.minPrice;

@@ -13,7 +13,8 @@ import {
   Category,
   Brand,
   ProductImageUrl
-  } from '../models/product.models';
+} from '../models/product.models';
+import { environment } from '../../../environments/environment';
 
 // Helper interface for API response
 interface ApiResponse<T> {
@@ -180,23 +181,27 @@ export class ProductService {
   }
 
   createReview(review: ProductReviewCreate): Observable<ProductReview> {
+    console.log(review);
+    
     return this.apiService.post<ApiResponse<ProductReview>>('api/ProductReview', review).pipe(
       map(response => this.extractData(response))
     );
   }
 
   updateReview(review: ProductReviewUpdate): Observable<ProductReview> {
-    return this.apiService.put<ApiResponse<ProductReview>>(`api/ProductReview/${review.id}`, review).pipe(
+    return this.apiService.put<ApiResponse<ProductReview>>(`api/ProductReview/`, review).pipe(
       map(response => this.extractData(response))
     );
   }
 
   deleteReview(reviewId: number): Observable<void> {
-    return this.apiService.delete<ApiResponse<void>>(`api/ProductReview/${reviewId}`).pipe(
+   
+    
+    return this.apiService.delete<ApiResponse<void>>(`api/ProductReview/toggle/${reviewId}`).pipe(
       map(response => {
         // For delete, we just check if successful
         if (!response.isSuccess) {
-          throw new Error(response.errorMessage || 'Failed to delete review');
+          throw new Error(response.errorMessage || 'undifind');
         }
       })
     );
