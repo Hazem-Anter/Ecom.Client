@@ -1,66 +1,55 @@
-.orders-container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-.page-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.empty-message {
-  text-align: center;
-  color: #777;
-
-  mat-icon {
-    font-size: 60px;
-    margin-bottom: 10px;
-  }
-}
-
-.orders-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-
-  @media (min-width: 700px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.order-card {
-  padding: 16px;
-  border-radius: 12px;
-  transition: box-shadow .2s ease-in-out;
-
-  &:hover {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-    cursor: pointer;
-  }
-}
-
-.order-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
+/* --- Status Badges (Dark Mode Optimized) --- */
 .status-badge {
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: white;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid transparent;
 
-  &.status-0 { background: #757575; }
-  &.status-1 { background: #0277bd; }
-  &.status-2 { background: #f9a825; }
-  &.status-3 { background: #2e7d32; }
-}
+  /* Pending */
+  &.status-0 {
+    background: rgba(107, 114, 128, 0.2);
+    /* Gray-500/20 */
+    color: #d1d5db;
+    /* Gray-300 */
+    border-color: rgba(107, 114, 128, 0.3);
+  }
 
-.actions {
-  text-align: right;
-  margin-top: 12px;
+  /* Processing (Assuming 1) */
+  &.status-1 {
+    background: rgba(59, 130, 246, 0.15);
+    /* Blue-500/15 */
+    color: #93c5fd;
+    /* Blue-300 */
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  /* Shipped (Assuming 2) */
+  &.status-2 {
+    background: rgba(245, 158, 11, 0.15);
+    /* Amber-500/15 */
+    color: #fcd34d;
+    /* Amber-300 */
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+
+  /* Delivered (Assuming 3) */
+  &.status-3 {
+    background: rgba(16, 185, 129, 0.15);
+    /* Emerald-500/15 */
+    color: #6ee7b7;
+    /* Emerald-300 */
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+
+  /* Cancelled (Assuming 4 or fallback) */
+  &.status-4 {
+    background: rgba(239, 68, 68, 0.15);
+    /* Red-500/15 */
+    color: #fca5a5;
+    /* Red-300 */
+    border-color: rgba(239, 68, 68, 0.3);
+  }
 }

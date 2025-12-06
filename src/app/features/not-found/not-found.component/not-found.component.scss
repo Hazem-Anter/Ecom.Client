@@ -1,25 +1,23 @@
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
+/* Smooth floating animation for the 404 text */
+@keyframes float {
 
-@keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-10px);
   }
 }
 
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.floating-element {
+  animation: float 6s ease-in-out infinite;
 }
 
-.animate-bounce {
-  animation: bounce 2s ease-in-out infinite;
+/* Ensure Material Icons are centered vertically in buttons */
+button .material-icons {
+  font-size: 1.25rem;
+  /* 20px */
+  line-height: 1;
 }

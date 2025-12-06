@@ -4,11 +4,12 @@ import { WishlistItemComponent } from './wishlist-item/wishlist-item';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../../shared/material/material-module';
 
 @Component({
   selector: 'app-wishlist',
   standalone: true,
-  imports: [CommonModule, RouterModule, WishlistItemComponent, PaginatorComponent],
+  imports: [CommonModule, RouterModule, WishlistItemComponent, PaginatorComponent, MaterialModule],
   templateUrl: './wishlist.html',
   styleUrls: ['./wishlist.scss'],
 })

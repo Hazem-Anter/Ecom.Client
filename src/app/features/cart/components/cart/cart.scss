@@ -1,137 +1,39 @@
-/* ------------------------------
-   PAGE LAYOUT
---------------------------------*/
-.cart-container {
-  padding: 24px;
+/* --- Material Table Dark Mode Overrides --- */
+
+// Force text colors for headers
+::ng-deep .mat-mdc-header-cell {
+  color: #9ca3af !important; // gray-400
+  font-size: 0.85rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600 !important;
 }
 
-.title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 16px;
+// Remove default table background
+::ng-deep .mat-mdc-table {
+  background: transparent !important;
 }
 
-.loading {
-  display: flex;
-  justify-content: center;
-  padding: 40px 0;
+// Fix Ripple effects on dark mode buttons
+::ng-deep .mat-mdc-icon-button {
+  --mat-mdc-icon-button-state-layer-color: currentColor;
 }
 
-.empty {
-  text-align: center;
-  mat-icon {
-    font-size: 60px;
-    width: 60px;
-    height: 60px;
-    color: #999;
-  }
+/* Spinner Color Override */
+::ng-deep .custom-spinner circle {
+  stroke: white !important;
 }
 
-/* ------------------------------
-   MATERIAL TABLE FIXES
---------------------------------*/
-
-/* Reset Material row height */
-.mat-row,
-.mat-header-row {
-  min-height: 64px !important;
-  height: auto !important;
+/* Optional: Scrollbar for the table on mobile */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 8px;
 }
 
-/* Keep cell content centered */
-.mat-cell,
-.mat-header-cell {
-  vertical-align: middle !important;
-  padding: 12px 16px !important;
-  font-size: 15px;
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: #1f2937;
 }
 
-/* Fix the weird line issue: only bottom border */
-.mat-row td {
-  border: none !important;
-  border-bottom: 1px solid #e0e0e0 !important;
-}
-
-.mat-row:last-child td {
-  border-bottom: none !important;
-}
-
-/* ------------------------------
-   IMAGE COLUMN
---------------------------------*/
-.cart-product-img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 6px;
-  display: block;
-  margin: auto;
-}
-
-.mat-column-image {
-  width: 70px;
-  text-align: center;
-}
-
-/* ------------------------------
-   QUANTITY COLUMN FIX
---------------------------------*/
-.mat-column-quantity {
-  text-align: center; /* Center the inner DIV within the cell */
-}
-
-/* Ensure the inner controls are styled correctly */
-.qty-controls {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-}
-
-.qty-controls * {
-  line-height: 1 !important; /* prevents baseline line */
-}
-
-.qty {
-  font-weight: 600;
-  min-width: 20px;
-  text-align: center;
-}
-
-/* ------------------------------
-   TOTALS + ACTIONS
---------------------------------*/
-.totals {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  align-items: center;
-
-  h2 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 600;
-  }
-}
-
-.actions {
-  display: flex;
-  gap: 12px;
-}
-
-/* ------------------------------
-   MATERIAL RIPPLE REMOVAL
-   (Cleaner look for +/- buttons)
---------------------------------*/
-.mat-column-quantity .mdc-button::before,
-.mat-column-quantity .mdc-icon-button::before {
-  display: none !important;
-  border: none !important;
-  height: 0 !important;
-}
-
-.mat-column-quantity .mat-mdc-button-persistent-ripple,
-.mat-column-quantity .mat-mdc-button-ripple,
-.mat-column-quantity .mat-mdc-focus-indicator {
-  display: none !important;
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
 }
