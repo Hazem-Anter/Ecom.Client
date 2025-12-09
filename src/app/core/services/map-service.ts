@@ -9,7 +9,7 @@ export class MapService {
 
   private http = inject(HttpClient);
 
-  // Free API from OpenStreetMap (No key needed for low usage)
+  // Free API from OpenStreetMap to decode the long/lat
   private readonly NOMINATIM_URL = 'https://nominatim.openstreetmap.org/reverse?format=json';
 
   getAddressFromCoords(lat: number, lng: number): Observable<any> {

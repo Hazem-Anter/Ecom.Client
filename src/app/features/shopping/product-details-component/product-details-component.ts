@@ -116,7 +116,6 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     if (!this.product) return;
-
     console.log('Add to cart:', this.product, 'Quantity:', this.quantity);
 
     this.cartService.addToCart(this.product.id, this.quantity, this.getFinalPrice()).subscribe({
@@ -157,7 +156,7 @@ export class ProductDetailsComponent implements OnInit {
           this.toast.info('Removed from wishlist');
         }
         // Refresh wishlist signal
-        this.wishlistService.loadWishlist(1, this.wishlistService.totalItems()).subscribe(); 
+        this.wishlistService.loadWishlist(1, this.wishlistService.pageSize()).subscribe(); 
       },
       error: (err) => {
         console.error("Wishlist toggle error:", err);

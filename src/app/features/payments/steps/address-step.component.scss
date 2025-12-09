@@ -1,11 +1,65 @@
+/* --- Custom Utility Mappings for Dynamic Classes --- */
+/* Using standard CSS instead of @apply to avoid build isolation issues */
+
+/* Backgrounds */
+.bg-gray-800-80 {
+  background-color: rgba(31, 41, 55, 0.8);
+  /* gray-800 / 0.8 */
+}
+
+.bg-blue-900-20 {
+  background-color: rgba(30, 58, 138, 0.2);
+  /* blue-900 / 0.2 */
+}
+
+.bg-blue-500-20 {
+  background-color: rgba(59, 130, 246, 0.2);
+  /* blue-500 / 0.2 */
+}
+
+.bg-gray-700-50 {
+  background-color: rgba(55, 65, 81, 0.5);
+  /* gray-700 / 0.5 */
+}
+
+/* Borders */
+.border-blue-500-30 {
+  border-color: rgba(59, 130, 246, 0.3);
+  /* blue-500 / 0.3 */
+}
+
+.hover-border-blue-500-50:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  /* blue-500 / 0.5 */
+}
+
+/* Shadows */
+.shadow-blue-500-20 {
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.2);
+}
+
+/* --- Base Component Styles --- */
 :host {
   display: block;
 }
 
+/* Animation for Card Selection */
 mat-card {
   border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Slight scale effect when selected */
+mat-card.border-blue-500 {
+  transform: scale(1.01);
+}
+
+/* Ensure Material Icons are centered in buttons */
+button .mat-icon {
+  line-height: 1;
+}
+
+/* Disabled Button Opacity override */
 button[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
